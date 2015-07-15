@@ -6,7 +6,7 @@ class Brasa_Register_Form{
 
 
 	public function __construct(){
-		add_action( 'init', array(&$this, 'do_check'), 999999999 );
+		add_action( 'template_redirect', array(&$this, 'do_check'), 999999999 );
 	}
 	private function do_register(){
 		$args = array(
