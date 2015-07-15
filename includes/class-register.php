@@ -11,13 +11,19 @@ class Brasa_Register_Form{
 	private function do_register(){
 		$args = array(
 			'user_login' => $_POST['user'],
+			'first_name' => $_POST['name'],
 			'display_name' => $_POST['name'],
 			'user_pass' => $_POST['password'],
 			'user_email' => $_POST['email'],
-			'user_password' => $_POST['password']
+			'user_password' => $_POST['password'],
+			'role' => 'author'
 		);
 		$user_id = wp_insert_user( $args );
 		if( !is_wp_error($user_id) ) {
+			update_user_meta( $user_id, 'idade', $_POST['idade']);
+			update_user_meta( $user_id, 'user_type', $_POST['user_type']);
+			update_user_meta( $user_id, 'fone', $_POST['fone']);
+
 			$args = array(
 				'user_login' => $_POST['user'],
 				'user_pass' => $_POST['password'],
@@ -26,10 +32,6 @@ class Brasa_Register_Form{
 			wp_signon( $args, false );
 			echo '<script>alert("Cadastro efetuado com sucesso!");</script>';
 			echo '<script>window.location="'.home_url().'";</script>';
-		}
-		else{
-			var_dump($user_id);
-			die();
 		}
 	}
 

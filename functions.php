@@ -87,6 +87,7 @@ $redirect->set_cap_to_allow(
 		'subscriber',
 		'contributor',
 		'editor',
+		'author',
 		'administrator'
 	)
 );
