@@ -96,3 +96,15 @@ $redirect->set_redirect_url( home_url('/registrar') );
  * register form
  */
 require_once get_stylesheet_directory() . '/includes/class-register.php';
+
+// ACF
+define( 'ACF_LITE' , true );
+include_once get_stylesheet_directory() . '/includes/advanced-custom-fields/acf.php';
+include_once get_stylesheet_directory() . '/includes/custom-fields.php';
+function remove_contact_methods( $contactmethods ) {
+  unset($contactmethods['aim']);
+  unset($contactmethods['jabber']);
+  unset($contactmethods['yim']);
+  return $contactmethods;
+}
+add_filter('user_contactmethods','remove_contact_methods',10,1);

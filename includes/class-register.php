@@ -23,6 +23,7 @@ class Brasa_Register_Form{
 			update_user_meta( $user_id, 'idade', $_POST['idade']);
 			update_user_meta( $user_id, 'user_type', $_POST['user_type']);
 			update_user_meta( $user_id, 'fone', $_POST['fone']);
+			update_user_meta( $user_id, 'polo', $_POST['polo']);
 
 			$args = array(
 				'user_login' => $_POST['user'],
