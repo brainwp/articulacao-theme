@@ -1,6 +1,16 @@
 (function ($) {
 jQuery(document).ready(function(){
 
+	//form register validation
+	$('#form-register').on('submit', function(e){
+		var pw = $('#password-1').val();
+		var pw_check  = $('#password-2').val();
+		if(pw != pw_check){
+			e.preventDefault();
+			alert('Erro: As senhas não batem');
+		}
+	});
+
 	// Navigation
     if ( jQuery(window).width() <= 768 ) {
         jQuery( '#header ul.menu' ).hide();

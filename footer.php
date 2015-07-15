@@ -5,8 +5,9 @@
  * @package P2
  */
 ?>
-	<?php get_sidebar(); ?>
-
+    <?php if(!is_page_template('register.php' )):?>
+		<?php get_sidebar(); ?>
+	<?php endif;?>
 	<div class="clear"></div>
 
 </div> <!-- // wrapper -->

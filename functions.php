@@ -10,7 +10,7 @@ function houston_register_sidebar() {
 		'name'          => __( 'Beneath Post Box', 'Houston' ),
 		'id'            => 'beneath-post-box',
 		'description'   => '',
-	        'class'         => '',
+	    'class'         => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widgettitle">',
@@ -46,7 +46,7 @@ add_filter( 'wp_nav_menu_items', 'houston_new_nav_menu_items', 10, 2 );
  */
 add_action( 'wp_enqueue_scripts', 'houston_scripts', 999 );
 function houston_scripts() {
-	wp_enqueue_script( 'woo-p2-script', get_stylesheet_directory_uri() . '/js/script.min.js', array( 'jquery' ), '', true );
+	wp_enqueue_script( 'woo-p2-script', get_stylesheet_directory_uri() . '/js/script.js', array( 'jquery' ), '', true );
 	wp_enqueue_script( 'fitvids', get_stylesheet_directory_uri() . '/js/fitvids.js', array( 'jquery' ), '', true );
 	wp_dequeue_script( 'iphone' );
 }
@@ -76,3 +76,22 @@ function houston_viewport_meta() {
 if ( defined( 'P2LIKES_URL' ) ) {
 	require_once( get_stylesheet_directory() . '/includes/integrations/p2-likes/p2-likes.php' );
 }
+
+/**
+ * redirect users
+ */
+require_once get_stylesheet_directory() . '/includes/class-redirect.php';
+$redirect = new Brasa_User_Permissions();
+$redirect->set_cap_to_allow(
+	array(
+		'subscriber',
+		'contributor',
+		'editor',
+		'administrator'
+	)
+);
+$redirect->set_redirect_url( home_url('/registrar') );
+/**
+ * register form
+ */
+require_once get_stylesheet_directory() . '/includes/class-register.php';
