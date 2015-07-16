@@ -2221,6 +2221,15 @@ h2.titulo {
 	margin-bottom: 0px;
 	font-weight: bold;
 }
+
+.logo-rede {
+  background: url(images/logo_rpfr-branco.png) transparent no-repeat scroll center top;
+  float: right;
+  text-indent: -99999px;
+  width: 367px;
+  min-height: 92px;
+}
+
 /**
  * Layout
  */
