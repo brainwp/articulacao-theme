@@ -10,9 +10,9 @@ get_header();
 		<h2><?php the_title(); ?></h2>
 
 		<ul id="postlist">
-			<li class="hentry">
+			<h2 class="titulo">
 				Já possui conta? Então <a href="<?php echo wp_login_url();?>">faça login</a>!
-			</li><!-- .hentry -->
+			</h2><!-- .hentry -->
 			<li class="hentry">
 				<form action="<?php home_url('/registrar');?>" id="form-register" method="POST">
 					<label>
