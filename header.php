@@ -43,6 +43,10 @@
 		) ); ?>
 	</div>
 	<?php endif; ?>
+		<a href="http://polos.mundialfutebolderua.org/">
+		<div class="logo-rede"> Rede Paulista de Futebol de Rua
+		</div>
+		</a>
 	</div>
 </div>
 
