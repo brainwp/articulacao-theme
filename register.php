@@ -14,7 +14,7 @@ get_header();
 				Já possui conta? Então <a href="<?php echo wp_login_url();?>">faça login</a>!
 			</li><!-- .hentry -->
 			<li class="hentry">
-				<form action="<?php home_url('/registrar');?>" id="form-register" method="POST">
+				<form action="<?php echo home_url();?>?do_register=true" id="form-register" method="POST">
 					<label>
 						Nome completo:
 						<input type="text" name="name" required>

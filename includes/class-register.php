@@ -2,11 +2,12 @@
 /* Brasa_Register_Form */
 class Brasa_Register_Form{
 
-	public $page_template = '';
-
+	private $register = false;
 
 	public function __construct(){
-		add_action( 'template_redirect', array(&$this, 'do_check'), 999999999 );
+		add_action( 'get_header', array(&$this, 'do_check'), 1 );
+		add_action( 'wp_footer', array(&$this, 'do_redirect'), 1 );
+
 	}
 	private function do_register(){
 		$args = array(
@@ -20,6 +21,7 @@ class Brasa_Register_Form{
 		);
 		$user_id = wp_insert_user( $args );
 		if( !is_wp_error($user_id) ) {
+			$this->register = true;
 			update_user_meta( $user_id, 'idade', $_POST['idade']);
 			update_user_meta( $user_id, 'user_type', $_POST['user_type']);
 			update_user_meta( $user_id, 'fone', $_POST['fone']);
@@ -45,11 +47,19 @@ class Brasa_Register_Form{
 			wp_die();
 		}
 		if(get_user_by('email', $_POST['email'])){
-			echo '<script>alert("Erro: Esse nome de usuário já está registrado");</script>';
+			echo '<script>alert("Erro: Esse email já está registrado");</script>';
 			echo '<script>window.history.back();</script>';
 			wp_die();
 		}
 		$this->do_register();
+	}
+	public function do_redirect(){
+		if(!isset($_GET['do_register']))
+			return;
+		if(!is_user_logged_in())
+			return;
+		echo '<script>alert("Cadastro efetuado com sucesso!");</script>';
+		echo '<script>window.location="'.home_url().'";</script>';
 	}
 }
 new Brasa_Register_Form();
