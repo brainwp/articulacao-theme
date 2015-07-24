@@ -44,10 +44,14 @@
 				</label>
 				<?php endif; ?>
 				<div class="inputs">
+
 					<textarea class="expand70-200" name="posttext" id="posttext" rows="4" cols="60"></textarea>
 
 					<label class="post-error" for="posttext" id="posttext_error"></label>
 					<div class="postrow">
+						<input id="posttitle" name="post_title" type="text" autocomplete="off"
+							placeholder="<?php esc_attr_e( 'Titulo', 'p2' ); ?>" />
+
 						<input id="tags" name="tags" type="text" autocomplete="off"
 							value="<?php esc_attr_e( 'Tags', 'p2' ); ?>"
 							onfocus="this.value=(this.value=='<?php echo esc_js( __( 'Tags', 'p2' ) ); ?>') ? '' : this.value;"

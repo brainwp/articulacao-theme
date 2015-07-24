@@ -108,3 +108,15 @@ function remove_contact_methods( $contactmethods ) {
   return $contactmethods;
 }
 add_filter('user_contactmethods','remove_contact_methods',10,1);
+function brasa_fix_empty_titles( $data, $postarr = null ) {
+	if ( 'post' != $data['post_type'] )
+		return $data;
+
+	if ( isset($_REQUEST['post_title']) ) {
+		$data['post_title'] = $_REQUEST['post_title'];
+	}
+	return $data;
+	var_dump($data);
+	die();
+}
+add_filter( 'wp_insert_post_data', 'brasa_fix_empty_titles', 9999999999 );
