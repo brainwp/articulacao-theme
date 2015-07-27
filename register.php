@@ -40,6 +40,10 @@ get_header();
 							<option value="Outros">Outros</option>
 						</select>
 					</label>
+					<label style="display:none;" id="label-user-type">
+						Especifique sua função
+						<input type="text" name="user_type_txt">
+					</label>
 					<label>
 						E-mail:
 						<input type="email" name="email">
