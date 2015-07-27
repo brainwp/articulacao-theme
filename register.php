@@ -41,7 +41,7 @@ get_header();
 					</label>
 					<label>
 						Telefone:
-						<input type="text" name="fone" required>
+						<input type="text" name="fone" required pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}">
 					</label>
 					<label>
 						No projeto você é:
