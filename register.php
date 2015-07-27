@@ -25,7 +25,19 @@ get_header();
 					</label>
 					<label>
 						Polo:
-						<input type="text" name="polo" required>
+						<?php if( !is_multisite() ) : ?>
+							<input type="text" name="polo" required>
+						<?php else : ?>
+							<?php $current = get_current_blog_id();?>
+							<?php $sites = wp_get_sites();?>
+							<select name="polo" required>
+								<?php foreach ($sites as $site) : ?>
+									<?php if( $site['blog_id'] == $current ) continue; ?>
+									<?php $infos = get_blog_details( array( 'blog_id' => $site['blog_id'] ) );?>
+									<option value="<?php echo esc_attr( $infos->blogname );?>"><?php echo $infos->blogname;?></option>
+								<?php endforeach;?>
+							</select>
+						<?php endif;?>
 					</label>
 					<label>
 						Telefone:
@@ -45,12 +57,8 @@ get_header();
 						<input type="text" name="user_type_txt">
 					</label>
 					<label>
-						E-mail:
-						<input type="email" name="email">
-					</label>
-					<label>
-						Nome de usuário:
-						<input type="text" name="user">
+						E-mail / Nome de usuário:
+						<input type="email" name="email" required>
 					</label>
 					<label>
 						Senha:

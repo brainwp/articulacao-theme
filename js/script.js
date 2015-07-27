@@ -14,6 +14,10 @@ jQuery(document).ready(function(){
 	$( 'select[name="user_type"' ).on( 'change', function(e) {
 		if( $( this ).val() == 'Outros' ) {
 			$( '#label-user-type' ).fadeIn(1200);
+			$( '#label-user-type input' ).attr( 'required', 'true' );
+		} else {
+			$( '#label-user-type' ).fadeOut( 1200 );
+			$( '#label-user-type input' ).removeAttr( 'required' );
 		}
 	});
 

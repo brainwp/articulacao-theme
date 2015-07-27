@@ -11,7 +11,7 @@ class Brasa_Register_Form{
 	}
 	private function do_register(){
 		$args = array(
-			'user_login' => $_POST['user'],
+			'user_login' => $_POST['email'],
 			'first_name' => $_POST['name'],
 			'display_name' => $_POST['name'],
 			'user_pass' => $_POST['password'],
@@ -28,7 +28,7 @@ class Brasa_Register_Form{
 			update_user_meta( $user_id, 'polo', $_POST['polo']);
 
 			$args = array(
-				'user_login' => $_POST['user'],
+				'user_login' => $_POST['email'],
 				'user_pass' => $_POST['password'],
 				'user_password' => $_POST['password'],
 			);
@@ -41,7 +41,7 @@ class Brasa_Register_Form{
 	public function do_check(){
 		if(!isset($_POST['is_form_register']))
 			return;
-		if(get_user_by('login', $_POST['user'])){
+		if(get_user_by('login', $_POST['email'])){
 			echo '<script>alert("Erro: Esse nome de usuário já está registrado");</script>';
 			echo '<script>window.history.back();</script>';
 			wp_die();
