@@ -54,7 +54,7 @@ class Brasa_Register_Form{
 		$this->do_register();
 	}
 	public function do_redirect(){
-		if(!isset($_GET['do_register']))
+		if( !is_page_template( 'register.php' ))
 			return;
 		if(!is_user_logged_in())
 			return;
