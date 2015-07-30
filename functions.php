@@ -120,3 +120,7 @@ function brasa_fix_empty_titles( $data, $postarr = null ) {
 	die();
 }
 add_filter( 'wp_insert_post_data', 'brasa_fix_empty_titles', 9999999999 );
+function brasa_post_format( $formats ){
+	return array( 'post', 'standard' );
+}
+add_filter('p2_accepted_post_cats', 'brasa_post_format');

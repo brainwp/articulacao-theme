@@ -58,7 +58,7 @@
 							onblur="this.value=(this.value=='') ? '<?php echo esc_js( __( 'Tags', 'p2' ) ); ?>' : this.value;" />
 						<input id="submit" type="submit" value="<?php esc_attr_e( 'Postar agora', 'p2' ); ?>" />
 					</div>
-					<input type="hidden" name="post_format" id="post_format" value="<?php echo esc_attr( $post_format ); ?>" />
+					<input type="hidden" name="post_format" id="post_format" value="0" />
 					<span class="progress spinner-post-new" id="ajaxActivity"></span>
 
 					<?php do_action( 'p2_post_form' ); ?>
