@@ -6,6 +6,15 @@ if(function_exists("register_field_group"))
 		'title' => 'Campos do usuário',
 		'fields' => array (
 			array (
+				'key' => 'field_55ca363f068ef',
+				'label' => 'Avatar',
+				'name' => 'custom_avatar',
+				'type' => 'image',
+				'save_format' => 'object',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+			),
+			array (
 				'key' => 'field_55a69be2ed09f',
 				'label' => 'Idade',
 				'name' => 'idade',
@@ -42,19 +51,19 @@ if(function_exists("register_field_group"))
 				'maxlength' => '',
 			),
 			array (
-				'key' => 'field_55a69c15ed0a2',
-				'label' => 'No projeto você é',
+				'key' => 'field_55ca36ac634be',
+				'label' => 'No projeto você é:',
 				'name' => 'user_type',
-				'type' => 'select',
+				'type' => 'radio',
 				'choices' => array (
 					'Mediador(a)' => 'Mediador(a)',
 					'Jogador(a)' => 'Jogador(a)',
 					'Educador(a)' => 'Educador(a)',
-					'Outros' => 'Outros',
 				),
+				'other_choice' => 1,
+				'save_other_choice' => 0,
 				'default_value' => '',
-				'allow_null' => 0,
-				'multiple' => 0,
+				'layout' => 'vertical',
 			),
 		),
 		'location' => array (

@@ -98,7 +98,7 @@ $redirect->set_redirect_url( home_url('/registrar') );
 require_once get_stylesheet_directory() . '/includes/class-register.php';
 
 // ACF
-define( 'ACF_LITE' , true );
+//define( 'ACF_LITE' , true );
 include_once get_stylesheet_directory() . '/includes/advanced-custom-fields/acf.php';
 include_once get_stylesheet_directory() . '/includes/custom-fields.php';
 function remove_contact_methods( $contactmethods ) {
@@ -116,11 +116,42 @@ function brasa_fix_empty_titles( $data, $postarr = null ) {
 		$data['post_title'] = $_REQUEST['post_title'];
 	}
 	return $data;
-	var_dump($data);
-	die();
 }
 add_filter( 'wp_insert_post_data', 'brasa_fix_empty_titles', 9999999999 );
 function brasa_post_format( $formats ){
 	return array( 'post', 'standard' );
 }
 add_filter('p2_accepted_post_cats', 'brasa_post_format');
+
+function brasa_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
+    $user = false;
+
+    if ( is_numeric( $id_or_email ) ) {
+
+        $id = (int) $id_or_email;
+        $user = get_user_by( 'id' , $id );
+
+    } elseif ( is_object( $id_or_email ) ) {
+
+        if ( ! empty( $id_or_email->user_id ) ) {
+            $id = (int) $id_or_email->user_id;
+            $user = get_user_by( 'id' , $id );
+        }
+
+    } else {
+        $user = get_user_by( 'email', $id_or_email );
+    }
+
+    if ( $user && is_object( $user ) ) {
+
+    	if( $image = get_user_meta( $user->ID, 'custom_avatar', true ) ) {
+    		$image = wp_get_attachment_image_src( $image, 'medium', false );
+    		$avatar = '<img src="'. $image[0] .'" class="avatar photo" />';
+    	}
+
+
+    }
+
+    return $avatar;
+}
+add_filter( 'get_avatar' , 'brasa_custom_avatar' , 1 , 5 );
