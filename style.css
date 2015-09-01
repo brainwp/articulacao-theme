@@ -1282,8 +1282,8 @@ img.avatar {
 }
 #postbox .postbox-sidebar .widget_text {
   padding: 1.618em;
-  border-top: 2.618em solid #ede7c5;
-  background-color: #f3efd8;
+  border-top: 1.618em solid #9DD9DB;
+  background-color: #DEEAEA;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   position: relative;
@@ -1959,11 +1959,13 @@ h2 .controls a#togglecomments:before {
   list-style-type: none;
 }
 .widget a {
-  color: #7d8484;
-  border-bottom: 1px dotted #dddddd;
+    color: #FFF;
+    background-color: #E1803B;
+    padding: 5px;
+    border-radius: 5px;
 }
 .widget a:hover {
-  border-bottom-style: solid;
+  border-bottom-style: none;
 }
 .widget a.button {
   color: #fff;
@@ -2325,14 +2327,6 @@ h2.titulo {
     color: #ffffff;
     background-color: #3898c4;
   }
-  #header .site-navigation {
-    /**
-			 * Level 1
-			 */
-    /**
-			 * Level 2 +
-			 */
-  }
   #header .site-navigation h1.assistive-text {
     display: none !important;
   }
@@ -2610,6 +2604,31 @@ h2.titulo {
     *margin-left: 1.92840023%;
     *margin-right: 1.92840023%;
   }
+
+}
+
+@media screen and (max-width: 760px) {
+	.logo-rede {
+	       float: none;
+	       margin-left: -15px;
+	} 
+
+	#header, #footer, #wrapper {
+	    width: auto !important;
+	}
+
+}
+
+@media screen and (max-width: 460px) {
+	.logo-rede {
+	       background-size: 100%;
+	       width: auto;
+	} 
+
+		#header h1 {
+	    font-size: 1.4em;
+	}
+
 }
 /**
  * Autocomplete
