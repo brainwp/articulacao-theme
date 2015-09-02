@@ -2232,6 +2232,10 @@ h2.titulo {
   min-height: 92px;
 }
 
+h2 .controls a#directions-keyboard {
+    display: none;
+}
+
 /**
  * Layout
  */
