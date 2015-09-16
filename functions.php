@@ -10,7 +10,7 @@ function houston_register_sidebar() {
 		'name'          => __( 'Beneath Post Box', 'Houston' ),
 		'id'            => 'beneath-post-box',
 		'description'   => '',
-	    'class'         => '',
+	        'class'         => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widgettitle">',
