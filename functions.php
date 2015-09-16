@@ -155,3 +155,14 @@ function brasa_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
     return $avatar;
 }
 add_filter( 'get_avatar' , 'brasa_custom_avatar' , 1 , 5 );
+
+add_action( 'after_setup_theme', 'brasa_theme_setup' );
+function brasa_theme_setup() {
+    load_child_theme_textdomain( 'articulacao', get_stylesheet_directory() . '/languages' );
+}
+
+function brasa_add_scripts() {
+	// Media Upload.
+	wp_enqueue_media();
+}
+add_action( 'wp_enqueue_scripts', 'brasa_add_scripts' );

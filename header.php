@@ -28,14 +28,14 @@
 		<a class="secondary" href="<?php echo home_url( '/' ); ?>"></a>
 
 		<?php if ( current_user_can( 'publish_posts' ) ) : ?>
-			<a href="" id="mobile-post-button" style="display: none;"><?php _e( 'Post', 'p2' ) ?></a>
+			<a href="" id="mobile-post-button" style="display: none;"><?php _e( 'Post', 'articulacao' ) ?></a>
 		<?php endif; ?>
 	</div>
 
 	<?php if ( has_nav_menu( 'primary' ) ) : ?>
 	<div role="navigation" class="site-navigation main-navigation">
-		<h1 class="assistive-text"><?php _e( 'Menu', 'p2' ); ?></h1>
-		<div class="assistive-text skip-link"><a href="#main" title="<?php esc_attr_e( 'Skip to content', 'p2' ); ?>"><?php _e( 'Skip to content', 'p2' ); ?></a></div>
+		<h1 class="assistive-text"><?php _e( 'Menu', 'articulacao' ); ?></h1>
+		<div class="assistive-text skip-link"><a href="#main" title="<?php esc_attr_e( 'Skip to content', 'articulacao' ); ?>"><?php _e( 'Skip to content', 'articulacao' ); ?></a></div>
 
 		<?php wp_nav_menu( array(
 			'theme_location' => 'primary',

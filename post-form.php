@@ -14,7 +14,7 @@
 			$('#post-types a').removeClass('selected');
 			$(this).addClass('selected');
 			if ($(this).attr('id') == 'post') {
-				$('#posttitle').val("<?php echo esc_js( __('Título do Post', 'p2') ); ?>");
+				$('#posttitle').val("<?php echo esc_js( __('Título do Post', 'articulacao') ); ?>");
 			} else {
 				$('#posttitle').val('');
 			}
@@ -50,13 +50,13 @@
 					<label class="post-error" for="posttext" id="posttext_error"></label>
 					<div class="postrow">
 						<input id="posttitle" name="post_title" type="text" autocomplete="off"
-							placeholder="<?php esc_attr_e( 'Titulo', 'p2' ); ?>" />
+							placeholder="<?php esc_attr_e( 'Titulo', 'articulacao' ); ?>" />
 
 						<input id="tags" name="tags" type="text" autocomplete="off"
-							value="<?php esc_attr_e( 'Tags', 'p2' ); ?>"
-							onfocus="this.value=(this.value=='<?php echo esc_js( __( 'Tags', 'p2' ) ); ?>') ? '' : this.value;"
-							onblur="this.value=(this.value=='') ? '<?php echo esc_js( __( 'Tags', 'p2' ) ); ?>' : this.value;" />
-						<input id="submit" type="submit" value="<?php esc_attr_e( 'Postar agora', 'p2' ); ?>" />
+							value="<?php esc_attr_e( 'Tags', 'articulacao' ); ?>"
+							onfocus="this.value=(this.value=='<?php echo esc_js( __( 'Tags', 'articulacao' ) ); ?>') ? '' : this.value;"
+							onblur="this.value=(this.value=='') ? '<?php echo esc_js( __( 'Tags', 'articulacao' ) ); ?>' : this.value;" />
+						<input id="submit" type="submit" value="<?php esc_attr_e( 'Postar agora', 'articulacao' ); ?>" />
 					</div>
 					<input type="hidden" name="post_format" id="post_format" value="0" />
 					<span class="progress spinner-post-new" id="ajaxActivity"></span>

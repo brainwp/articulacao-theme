@@ -15,7 +15,7 @@
 	if ( ! is_page() ):
 		$author_posts_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 		$posts_by_title   = sprintf(
-			__( 'Posts by %1$s ( @%2$s )', 'p2' ),
+			__( 'Posts by %1$s ( @%2$s )', 'articulacao' ),
 			get_the_author_meta( 'display_name' ),
 			get_the_author_meta( 'user_nicename' )
 		); ?>
@@ -43,7 +43,7 @@
 						echo post_reply_link( array(
 							'before'        => isset( $before_reply_link ) ? $before_reply_link : '',
 							'after'         => '',
-							'reply_text'    => __( 'Reply', 'p2' ),
+							'reply_text'    => __( 'Reply', 'articulacao' ),
 							'add_below'     => 'comments'
 						), get_the_ID() );
 				}
@@ -55,7 +55,7 @@
 			</span>
 			<?php if ( is_object_in_taxonomy( get_post_type(), 'post_tag' ) ) : ?>
 				<span class="tags">
-					<?php tags_with_count( '', __( '<br />Tags:' , 'p2' ) .' ', ', ', ' &nbsp;' ); ?>&nbsp;
+					<?php tags_with_count( '', __( '<br />Tags:' , 'articulacao' ) .' ', ', ', ' &nbsp;' ); ?>&nbsp;
 				</span>
 			<?php endif; ?>
 		</span>
@@ -70,7 +70,7 @@
 	<div id="content-<?php the_ID(); ?>" class="postcontent">
 	<?php
 		p2_title();
-		the_content( __( '(More ...)' , 'p2' ) );
+		the_content( __( '(More ...)' , 'articulacao' ) );
 	?>
 	</div>
 
@@ -81,14 +81,14 @@
 
 	$comment_field = '<div class="form"><textarea id="comment" class="expand50-100" name="comment" cols="45" rows="3"></textarea></div> <label class="post-error" for="comment" id="commenttext_error"></label>';
 
-	$comment_notes_before = '<p class="comment-notes">' . ( get_option( 'require_name_email' ) ? sprintf( ' ' . __( 'Required fields are marked %s', 'p2' ), '<span class="required">*</span>' ) : '' ) . '</p>';
+	$comment_notes_before = '<p class="comment-notes">' . ( get_option( 'require_name_email' ) ? sprintf( ' ' . __( 'Required fields are marked %s', 'articulacao' ), '<span class="required">*</span>' ) : '' ) . '</p>';
 
 	$p2_comment_args = array(
-		'title_reply'           => __( 'Reply', 'p2' ),
+		'title_reply'           => __( 'Reply', 'articulacao' ),
 		'comment_field'         => $comment_field,
 		'comment_notes_before'  => $comment_notes_before,
 		'comment_notes_after'   => '<span class="progress spinner-comment-new"></span>',
-		'label_submit'          => __( 'Reply', 'p2' ),
+		'label_submit'          => __( 'Reply', 'articulacao' ),
 		'id_submit'             => 'comment-submit',
 	);
 
@@ -98,12 +98,12 @@
 		<div class="discussion" style="display: none">
 			<p>
 				<?php p2_discussion_links(); ?>
-				<a href="#" class="show-comments"><?php _e( 'Toggle Comments', 'p2' ); ?></a>
+				<a href="#" class="show-comments"><?php _e( 'Toggle Comments', 'articulacao' ); ?></a>
 			</p>
 		</div>
 	<?php endif;
 
-	wp_link_pages( array( 'before' => '<p class="page-nav">' . __( 'Pages:', 'p2' ) ) ); ?>
+	wp_link_pages( array( 'before' => '<p class="page-nav">' . __( 'Pages:', 'articulacao' ) ) ); ?>
 
 	<div class="bottom-of-entry">&nbsp;</div>
 
