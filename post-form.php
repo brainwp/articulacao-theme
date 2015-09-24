@@ -41,7 +41,7 @@
 
 			<?php $return = home_url('/?updated=true');?>
 			<?php if ( $default_post = get_page_by_title( 'default post', OBJECT, 'post' ) ) : ?>
-				<?php acf_form( array( 'new_post' => true, 'post_id' => 67, 'post_title' => true, 'post_content' => true, 'html_before_fields' => $acf_before, 'return' => $return, 'submit_value' => __('Enviar novo post', 'articulacao') ) ); ?>
+				<?php acf_form( array( 'new_post' => true, 'post_id' => $default_post->ID, 'post_title' => true, 'post_content' => true, 'html_before_fields' => $acf_before, 'return' => $return, 'submit_value' => __('Enviar novo post', 'articulacao') ) ); ?>
 			<?php endif;?>
 		</div>
 
