@@ -49,6 +49,18 @@ function houston_scripts() {
 	wp_enqueue_script( 'woo-p2-script', get_stylesheet_directory_uri() . '/js/script.js', array( 'jquery' ), '', true );
 	wp_enqueue_script( 'fitvids', get_stylesheet_directory_uri() . '/js/fitvids.js', array( 'jquery' ), '', true );
 	wp_dequeue_script( 'iphone' );
+	wp_localize_script(
+		'woo-p2-script',
+		'odinAdminParams',
+			array(
+				'galleryTitle'  => __( 'Adicionar imagens a galeria', 'odin' ),
+				'galleryButton' => __( 'Adicionar na galeria', 'odin' ),
+				'galleryRemove' => __( 'Remover imagem', 'odin' ),
+				'uploadTitle'   => __( 'Escolha um arquivo', 'odin' ),
+				'uploadButton'  => __( 'Adicionar arquivo', 'odin' ),
+			)
+	);
+
 }
 
 
@@ -162,7 +174,57 @@ function brasa_theme_setup() {
 }
 
 function brasa_add_scripts() {
+	// Color Picker.
+	wp_enqueue_style( 'wp-color-picker' );
+	wp_enqueue_script( 'wp-color-picker' );
 	// Media Upload.
 	wp_enqueue_media();
-}
+	// jQuery UI.
+	wp_enqueue_script( 'jquery-ui-sortable' );}
+
+	wp_enqueue_script( 'tiny_mce' );
+
+	wp_enqueue_script( 'jquery-ui-core' );
+	wp_enqueue_script( 'wp-mediaelement' );
+	wp_enqueue_script( 'media-upload' );
 add_action( 'wp_enqueue_scripts', 'brasa_add_scripts' );
+
+function brasa_gallery_insert( $post_id ) {
+	if ( isset( $_POST['brasa-gallery'] ) ) {
+		if( !empty ( $_POST['brasa-gallery'] ) ){
+			update_post_meta( $post_id, 'brasa_gallery', $_POST['brasa-gallery'] );
+		}
+		else{
+			delete_post_meta( $post_id, 'brasa_gallery' );
+		}
+	}
+
+}
+
+add_action( 'save_post', 'brasa_gallery_insert' );
+
+function brasa_add_acf_post_frontend( $post_id ) {
+    // check if this is to be a new post
+    if( ! isset( $_POST['brasa_add_new'] )  ) {
+        return $post_id;
+    }
+
+    // Create a new post
+    $post = array(
+        'post_status'  => 'publish',
+        'post_title'  => esc_textarea( $_POST['the_title'] ),
+        'post_type'  => 'post',
+        'post_content' => $_POST['acf_settings']
+    );
+
+    // insert the post
+    $post_id = wp_insert_post( $post );
+
+    // update $_POST['return']
+    $_POST['return'] = add_query_arg( array('post_id' => $post_id), $_POST['return'] );
+
+    // return the new ID
+    return $post_id;
+}
+
+add_filter('acf/pre_save_post' , 'brasa_add_acf_post_frontend' );

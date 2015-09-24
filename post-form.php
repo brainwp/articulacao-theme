@@ -36,38 +36,13 @@
 		</div>
 
 		<div class="inputarea">
+			<?php $acf_before = sprintf('<input type="text" name="the_title" placeholder="%s">', __('Titulo', 'articulacao') );?>
+			<?php $acf_before .= '<input type="hidden" name="brasa_add_new" value="true">';?>
 
-			<form id="new_post" name="new_post" method="post" action="<?php echo site_url(); ?>/">
-				<?php if ( 'status' == $post_format || empty( $post_format ) ) : ?>
-				<label for="posttext" id="post-prompt">
-					<?php p2_user_prompt(); ?>
-				</label>
-				<?php endif; ?>
-				<div class="inputs">
-
-					<textarea class="expand70-200" name="posttext" id="posttext" rows="4" cols="60"></textarea>
-
-					<label class="post-error" for="posttext" id="posttext_error"></label>
-					<div class="postrow">
-						<input id="posttitle" name="post_title" type="text" autocomplete="off"
-							placeholder="<?php esc_attr_e( 'Titulo', 'articulacao' ); ?>" />
-
-						<input id="tags" name="tags" type="text" autocomplete="off"
-							value="<?php esc_attr_e( 'Tags', 'articulacao' ); ?>"
-							onfocus="this.value=(this.value=='<?php echo esc_js( __( 'Tags', 'articulacao' ) ); ?>') ? '' : this.value;"
-							onblur="this.value=(this.value=='') ? '<?php echo esc_js( __( 'Tags', 'articulacao' ) ); ?>' : this.value;" />
-						<input id="submit" type="submit" value="<?php esc_attr_e( 'Postar agora', 'articulacao' ); ?>" />
-					</div>
-					<input type="hidden" name="post_format" id="post_format" value="0" />
-					<span class="progress spinner-post-new" id="ajaxActivity"></span>
-
-					<?php do_action( 'p2_post_form' ); ?>
-
-					<input type="hidden" name="action" value="post" />
-					<?php wp_nonce_field( 'new-post' ); ?>
-				</div>
-			</form>
-
+			<?php $return = home_url('/?updated=true');?>
+			<?php if ( $default_post = get_page_by_title( 'default post', OBJECT, 'post' ) ) : ?>
+				<?php acf_form( array( 'new_post' => true, 'post_id' => 67, 'post_title' => true, 'post_content' => true, 'html_before_fields' => $acf_before, 'return' => $return, 'submit_value' => __('Enviar novo post', 'articulacao') ) ); ?>
+			<?php endif;?>
 		</div>
 
 		<div class="clear"></div>

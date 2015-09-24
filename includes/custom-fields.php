@@ -1,4 +1,10 @@
+
 <?php
+function my_register_fields(){
+	include_once get_stylesheet_directory() . '/includes/acf-repeater/repeater.php';
+}
+add_action('acf/register_fields', 'my_register_fields');
+
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (
@@ -72,6 +78,55 @@ if(function_exists("register_field_group"))
 					'param' => 'ef_user',
 					'operator' => '==',
 					'value' => 'all',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+}
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_imagem',
+		'title' => 'Imagem',
+		'fields' => array (
+			array (
+				'key' => 'field_5604238dc65aa',
+				'label' => 'Selecione uma imagem',
+				'name' => 'imagem_field',
+				'type' => 'repeater',
+				'sub_fields' => array (
+					array (
+						'key' => 'field_5604276ba21af',
+						'label' => 'Imagem',
+						'name' => 'the_img',
+						'type' => 'image',
+						'column_width' => '',
+						'save_format' => 'id',
+						'preview_size' => 'thumbnail',
+						'library' => 'all',
+					),
+				),
+				'row_min' => 3,
+				'row_limit' => '',
+				'layout' => 'table',
+				'button_label' => 'Adicionar mais campos de imagem',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
 					'order_no' => 0,
 					'group_no' => 0,
 				),

@@ -72,6 +72,18 @@
 		p2_title();
 		the_content( __( '(More ...)' , 'articulacao' ) );
 	?>
+	<?php if( have_rows('imagem_field') ):?>
+
+ 		<?php // loop through the rows of data
+    	while ( have_rows('imagem_field') ) : the_row(); ?>
+    		<?php $image_attributes = wp_get_attachment_image_src( get_sub_field( 'the_img' ), 'full' ); ?>
+			<a href="<?php echo $image_attributes[0];?>">
+				<?php echo wp_get_attachment_image( get_sub_field( 'the_img' ), 'medium' );?>
+			</a>
+
+    	<?php endwhile; ?>
+	<?php endif;?>
+
 	</div>
 
 	<?php

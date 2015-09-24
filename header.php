@@ -1,3 +1,4 @@
+<?php acf_form_head(); ?>
 <?php
 /**
  * Header template.
@@ -49,5 +50,4 @@
 		</a>
 	</div>
 </div>
-
 <div id="wrapper">
