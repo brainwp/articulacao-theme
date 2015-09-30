@@ -1002,7 +1002,7 @@ button {
 	-webkit-font-smoothing: antialiased;
 	border: 0;
 	text-decoration: none;
-	padding: 0.857em;
+	padding: 0.557em;
 	-webkit-border-radius: 0.327em;
 	border-radius: 0.327em;
 	color: #ffffeb;
@@ -1321,13 +1321,15 @@ img.avatar {
 	left: auto;
 	right: 3px;
 }
+
 h2 .controls {
-	font-size: .618em;
-	float: right;
-	font-weight: normal;
-	color: #f9f9f9;
-	line-height: 2.344;
-	letter-spacing: -2px;
+    font-size: 1.118em;
+    float: right;
+    font-weight: normal;
+    color: #f9f9f9;
+    line-height: 1.344;
+    letter-spacing: -2px;
+    margin-top: -9px;
 }
 h2 .controls a {
 	font-weight: normal;
@@ -1810,7 +1812,7 @@ h2 .controls a#togglecomments:before {
 	font-weight: normal;
 	color: #ffffff;
 	float: right;
-	font-size: .857em;
+	font-size: 1.257em;
 	position: absolute;
 	top: .618em;
 	right: 1.618em;
@@ -2870,7 +2872,20 @@ h2 .controls a#directions-keyboard {
 }
 #poststuff {
 	min-width: 0px !important;
+	margin-bottom: 50px;
+	padding: 20px;
+	border-bottom: 5px solid #399CA1;
 }
+
+#poststuff input[type="submit"] {
+	background-color: #E1803B;
+}
+
+#poststuff input[type="submit"]:hover {
+	background-color: #CC6724;
+}
+
+
 #notify {
 	display: none !important;
 }
