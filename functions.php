@@ -155,3 +155,22 @@ function brasa_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
     return $avatar;
 }
 add_filter( 'get_avatar' , 'brasa_custom_avatar' , 1 , 5 );
+
+// redirect user after login
+function brasa_login_redirect( $redirect_to, $request, $user ) {
+	//is there a user to check?
+	global $user;
+	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+		//check for admins
+		if ( in_array( 'administrator', $user->roles ) || in_array( 'editor', $user->roles ) ) {
+			// redirect them to the default place
+			return admin_url();
+		} else {
+			return home_url();
+		}
+	} else {
+		return $redirect_to;
+	}
+}
+
+add_filter( 'login_redirect', 'brasa_login_redirect', 10, 3 );
