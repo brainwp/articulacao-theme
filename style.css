@@ -1245,12 +1245,24 @@ img.avatar {
 #postbox #media-buttons {
 	float: right;
 }
+
+span.media-description {
+	float: right;
+	margin: 16px 5px;
+	font-weight: bold;
+	color: #28888C;
+	display: block;
+	position: relative;
+}
+
 #postbox #insert-media-button {
 	display: block;
 	text-indent: -9999px;
 	position: relative;
 	height: 1em;
 	width: 1em;
+	margin: 10px 0;
+	padding: 16px 18px;
 }
 #postbox #insert-media-button:before {
 	font-family: 'FontAwesome';
@@ -1263,7 +1275,7 @@ img.avatar {
 	margin: 0;
 	text-indent: 0;
 	position: absolute;
-	top: 0;
+	top: 6px;
 	left: 0;
 	width: 100%;
 	height: 100%;
@@ -2873,7 +2885,7 @@ h2 .controls a#directions-keyboard {
 #poststuff {
 	min-width: 0px !important;
 	margin-bottom: 50px;
-	padding: 20px;
+	padding: 10px;
 	border-bottom: 5px solid #399CA1;
 }
 
@@ -2882,19 +2894,27 @@ h2 .controls a#directions-keyboard {
 }
 
 #poststuff input[type="submit"]:hover {
-	background-color: #CC6724;
+	background-color: #399CA1;
 }
 
+#poststuff h2 {
+	margin-top: 0px;
+	font-family: "Allan","Arial",sans-serif;
+	font-weight: bold;
+}
 
 #notify {
 	display: none !important;
 }
+
 form#post > div {
 	display: block !important;
 }
+
 #insert-media-button {
 	display: none !important;
 }
+
 #acf_settings_ifr {
 	height:128px !important;
 }
