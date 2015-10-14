@@ -2911,10 +2911,6 @@ form#post > div {
 	display: block !important;
 }
 
-#insert-media-button {
-	display: none !important;
-}
-
 #acf_settings_ifr {
 	height:128px !important;
 }

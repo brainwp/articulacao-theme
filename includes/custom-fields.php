@@ -1,4 +1,3 @@
-
 <?php
 function my_register_fields(){
 	include_once get_stylesheet_directory() . '/includes/acf-repeater/repeater.php';
