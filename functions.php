@@ -24,6 +24,11 @@ function houston_register_sidebar() {
  */
 add_action( 'init', 'houston_custom' );
 function houston_custom() {
+	/*permissions */
+    $role = get_role( 'author' );
+    $role->add_cap( 'upload_files' );
+
+	/*scripts*/
 	remove_action( 'wp_enqueue_scripts', 'p2_iphone_style', 1000 );
 }
 
