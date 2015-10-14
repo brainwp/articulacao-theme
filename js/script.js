@@ -113,59 +113,6 @@ jQuery(document).ready(function(){
 		jQuery( '#posttext' ).focus();
 		return false;
 	});
-	$('#commentform').on( 'submit', function(e){
-		console.log('submitou:');
-		var thisForm = $(e.target);
-		var thisFormElements = $('#comment, #comment-submit, :input', thisForm).not('input[type="hidden"]');
-		var submitProgress = thisForm.find('span.progress');
-		var commenttext = $.trim($('#comment', thisForm).val());
-
-		var comment_post_ID = $('#comment_post_ID', thisForm).val();
-		var comment_parent = $('#comment_parent', thisForm).val();
-
-		var subscribe = 'false';
-		if ( $( '#subscribe' ).attr( 'checked' ) ) // WP3.1 Compat: Best to use .prop()
-			subscribe = 'subscribe';
-
-		var subscribe_blog = 'false';
-			if ( $( '#subscribe_blog' ).attr( 'checked' ) ) // WP3.1 Compat: Best to use .prop()
-				subscribe_blog = 'subscribe';
-			var dataString = {action: 'new_comment' , _ajax_post: nonce, comment: commenttext,  comment_parent: comment_parent, comment_post_ID: comment_post_ID, subscribe: subscribe, subscribe_blog: subscribe_blog};
-			dataString['author'] = $('#author').val();
-			dataString['email'] = $('#email').val();
-			dataString['url'] = $('#url').val();
-		var errorMessage = '';
-		$.ajax( {
-			type: "POST",
-			url: ajaxReadUrl, // The exception: WP's comment endpoint is "public" (i.e., not in /wp-admin/)
-			data: dataString,
-				success: function( result ) {
-					var $form = $( "#respond" );
-
-					$form.slideUp( 200, function() {
-						submitProgress.fadeOut();
-
-						var lastComment = $form.prev( "li" );
-						if ( isNaN( result ) || 0 == result || 1 == result )
-							errorMessage = result;
-						$( '#comment' ).val( '' );
-						if ( errorMessage != "" )
-							p2.utility.notification( errorMessage );
-
-						p2.comment.fetch( false );
-
-						if ( ! isPage )
-							p2.utility.toggleUpdates( 'unewcomments' );
-
-						thisFormElements
-							.prop( 'disabled', false )
-							.removeClass( 'disabled' );
-				} );
-			}
-		} );
-
-	});
-
 });
 jQuery(window).resize(function(){
 
