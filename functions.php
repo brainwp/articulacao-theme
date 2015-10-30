@@ -105,7 +105,6 @@ require_once get_stylesheet_directory() . '/includes/class-register.php';
 // ACF
 //define( 'ACF_LITE' , true );
 include_once get_stylesheet_directory() . '/includes/advanced-custom-fields/acf.php';
-include_once get_stylesheet_directory() . '/includes/custom-fields.php';
 function remove_contact_methods( $contactmethods ) {
   unset($contactmethods['aim']);
   unset($contactmethods['jabber']);
@@ -179,3 +178,6 @@ function brasa_login_redirect( $redirect_to, $request, $user ) {
 }
 
 add_filter( 'login_redirect', 'brasa_login_redirect', 10, 3 );
+
+require_once get_stylesheet_directory() . '/core/classes/class-theme-options.php';
+include_once get_stylesheet_directory() . '/includes/custom-fields.php';

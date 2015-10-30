@@ -140,3 +140,34 @@ if(function_exists("register_field_group"))
 		'menu_order' => 0,
 	));
 }
+
+/* ODIN FIELDS */
+$odin_theme_options = new Odin_Theme_Options(
+    'odin-options', // Slug/ID da página (Obrigatório)
+    __( 'Brasa Theme Options', 'odin' ), // Titulo da página (Obrigatório)
+    'manage_options' // Nível de permissão (Opcional) [padrão é manage_options]
+);
+$odin_theme_options->set_tabs(
+    array(
+        array(
+            'id' => 'odin_register', // ID da aba e nome da entrada no banco de dados.
+            'title' => __( 'Configurações da página de registro', 'odin' ), // Título da aba.
+        ),
+    )
+);
+$odin_theme_options->set_fields(
+    array(
+        'register_section' => array(
+            'tab'   => 'odin_register', // Sessão da aba odin_general
+            'title' => __( 'Configurações da página de Registro', 'odin' ),
+            'fields' => array(
+                array(
+                    'id' => 'polos',
+                    'label' => __( 'Lista de Polos', 'odin' ),
+                    'type' => 'textarea',
+                    'description' => __( 'Coloque separado por virgula', 'odin' )
+                ),
+            )
+        ),
+    )
+);
